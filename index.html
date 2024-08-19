@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão de Aluguéis de Bicicleta</title>
+</head>
+<body>
+    <h1>Previsão de Aluguéis de Bicicleta</h1>
+
+    <label for="diaSemana">Dia da Semana:</label>
+    <select id="diaSemana">
+        <option value="segunda">Segunda-feira</option>
+        <option value="terça">Terça-feira</option>
+        <option value="quarta">Quarta-feira</option>
+        <option value="quinta">Quinta-feira</option>
+        <option value="sexta">Sexta-feira</option>
+        <option value="sábado">Sábado</option>
+        <option value="domingo">Domingo</option>
+    </select>
+
+    <label for="clima">Condições Climáticas:</label>
+    <select id="clima">
+        <option value="ensolarado">Ensolarado</option>
+        <option value="nublado">Nublado</option>
+        <option value="chuvoso">Chuvoso</option>
+    </select>
+
+    <button onclick="preverAlugueis()">Prever Aluguéis</button>
+
+    <h2 id="resultado">Quantidade Prevista: --</h2>
+
+    <script>
+        function preverAlugueis() {
+            const diaSemana = document.getElementById("diaSemana").value;
+            const clima = document.getElementById("clima").value;
+
+            let previsao = 0;
+
+            // Simples lógica de previsão baseada no dia da semana e clima
+            if (diaSemana === "sábado" || diaSemana === "domingo") {
+                if (clima === "ensolarado") {
+                    previsao = 40;
+                } else if (clima === "nublado") {
+                    previsao = 25;
+                } else {
+                    previsao = 10; // Chuvoso
+                }
+            } else { // Dias da semana
+                if (clima === "ensolarado") {
+                    previsao = 20;
+                } else if (clima === "nublado") {
+                    previsao = 10;
+                } else {
+                    previsao = 5; // Chuvoso
+                }
+            }
+
+            document.getElementById("resultado").innerText = "Quantidade Prevista: " + previsao;
+        }
+    </script>
+</body>
+</html>
